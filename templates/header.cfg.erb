@@ -1,0 +1,23 @@
+# THIS FILE MANAGED BY PUPPET
+
+User            "nobody"
+Group           "nobody"
+
+##
+## Logging: (goes to syslog by default)
+##      0       no logging
+##      1       normal
+##      2       extended
+##      3       Apache-style (common log format)
+###
+LogLevel        3
+
+##
+## check backend every X secs:
+###
+Alive           30
+
+##
+## poundctl control socket
+###
+Control "/var/run/pound/poundctl.socket"
