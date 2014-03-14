@@ -26,31 +26,31 @@ class pound::config {
 
   concat::fragment { 'pound_http_start':
     target  => $pound_config,
-    content => 'ListenHTTP',
+    content => "ListenHTTP\n    Address 0.0.0.0\n    Port 80\n",
     order   => 20,
   }
 
-  # concat::fragment { 'pound_http_service_${name}': order => 30 }
+  # order 30
   Concat::Fragment <<| tag == 'pound_http' |>>
 
   concat::fragment { 'pound_http_end':
     target  => $pound_config,
-    content => 'End',
+    content => "End\n",
     order   => 40,
   }
 
   concat::fragment { 'pound_https_start':
     target  => $pound_config,
-    content => 'ListenHTTPS',
+    content => "ListenHTTPS\n    Address 0.0.0.0\n    Port 443\n",
     order   => 50,
   }
 
-  # concat::fragment { 'pound_https_service_${name}': order => 60 }
+  # order 60
   Concat::Fragment <<| tag == 'pound_https' |>>
 
   concat::fragment { 'pound_https_end':
     target  => $pound_config,
-    content => 'End',
+    content => "End\n",
     order   => 70,
   }
 
