@@ -1,6 +1,6 @@
 class pound::https (
     $certificate,
-    $head_require=$::hostname,
+    $head_require="Host: ${hostname}",
     $backend_ip=$::ipaddress,
     $backend_port='80') {
 
