@@ -39,20 +39,20 @@ class pound::config {
     order   => 40,
   }
 
-  concat::fragment { 'pound_https_start':
-    target  => $pound_config,
-    content => "ListenHTTPS\n    Address 0.0.0.0\n    Port 443\n",
-    order   => 50,
-  }
+  #concat::fragment { 'pound_https_start':
+  #  target  => $pound_config,
+  #  content => "ListenHTTPS\n    Address 0.0.0.0\n    Port 443\n",
+  #  order   => 50,
+  #}
 
-  # order 60
-  Concat::Fragment <<| tag == 'pound_https' |>>
+  ## order 60
+  #Concat::Fragment <<| tag == 'pound_https' |>>
 
-  concat::fragment { 'pound_https_end':
-    target  => $pound_config,
-    content => "End\n",
-    order   => 70,
-  }
+  #concat::fragment { 'pound_https_end':
+  #  target  => $pound_config,
+  #  content => "End\n",
+  #  order   => 70,
+  #}
 
   file { '/etc/default/pound':
     source => 'puppet:///modules/pound/default',

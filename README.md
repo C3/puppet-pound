@@ -64,6 +64,7 @@ None.
 
 ## TODO
 
+1. Fix SSL config so it conditionally adds itself, you can't have an empty ```ListenHTTPS``` block or it barfs on startup
 1. Configure SSL certs in a betterer manner
 1. Add options to configure header flags, add others
 
