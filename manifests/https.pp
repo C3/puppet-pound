@@ -7,7 +7,7 @@ class pound::https (
     @@concat::fragment { "pound_https_service_${hostname}_${head_require}":
       target  => '/etc/pound/pound.cfg',
       content => template('pound/https.cfg.erb'),
-      order   => 60,
+      order   => '60',
       tag     => 'pound_https',
     }
 
