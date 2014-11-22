@@ -1,6 +1,8 @@
-class pound::config {
+class pound::config (
+  $allow_all_methods  = $pound::allow_all_methods,
+  $pound_config       = '/etc/pound/pound.cfg'
+){
   include concat::setup
-  $pound_config = '/etc/pound/pound.cfg'
 
   File {
     require => Class['pound::install'],
@@ -28,6 +30,14 @@ class pound::config {
     target  => $pound_config,
     content => "ListenHTTP\n    Address 0.0.0.0\n    Port 80\n",
     order   => '20',
+  }
+
+  if $allow_all_methods {
+    concat::fragment { 'pound_http_methods':
+      target  => $pound_config,
+      content => "    xHTTP 1\n",
+      order   => '25',
+    }
   }
 
   # order 30
